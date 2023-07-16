@@ -1,0 +1,13 @@
+flask setup
+
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+#from flask_login import LoginManager
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, RadioField
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
+from werkzeug.security import generate_password_hash, check_password_hash
+#from flask_login import UserMixin
+from flask import request, render_template, flash, redirect, url_for
+#from flask_login import current_user, login_user, logout_user, login_required
+from werkzeug.urls import url_parse
