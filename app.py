@@ -1,5 +1,4 @@
 import main
-
 # some info
 
 # it has a chance of 0.0255010965471515% of printing random things like zeros (on months with 30 or 31 days) on the output calendar. In case that happens, run the program again. Oh, and the chances increase if you eliminate a lot of days for surgeons.
@@ -121,7 +120,6 @@ def menu():
     if num == 5:
         main.order()
 
-        
     if num < 1 or num > 5:
         print("Yo quiero marcha marcha")
         print("Yo quiero marcha marcha")
