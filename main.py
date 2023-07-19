@@ -141,7 +141,7 @@ class Surgeon:
             else:
                 self.calManager.calendar[0][i-1 + self.calManager.initSkip] = 1
                 self.locCalManager.calendar[0][i-1 + self.calManager.initSkip] = -1
-                elseMinus1(surgeonLst, i-1 + self.calManager.initSkip, 5)
+                elseMinus1(surgeonLst, surgeonLst.index(self), i-1 + self.calManager.initSkip, 5)
 
     def LocSetDays(self, days=[], surgeonLst=[], calendar=[]):
         lens = []
