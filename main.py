@@ -44,17 +44,15 @@ class Calendar():
             for b in range(len(calendar[a])):
                 if calendar[a][b] == -1:
                     calendar[a][b] = 0
-        sd = 0
+        sd = True
         if skipDay == -2:
             sd = False
-        else:
-            sd = skipDay
 
         if sd:
             for i in range(len(self.calendar)):
                 if i == 0:
                     if skipDay > self.initSkip:
-                        self.calendar[0][skipDay]
+                        self.calendar[0][skipDay] = -1
                 elif len(self.calendar[i]) > skipDay:
                     self.calendar[i][skipDay] = -1
 
@@ -197,8 +195,6 @@ conDays = [conDay1, conDay2, conDay3, conDay4, conDay5, conDay6, conDay7, conDay
 for i in range(len(conDays)):
     if conDays[i] == -1:
         conDays[i] = 6
-    if conDays[i] == -2:
-        conDays[i] = False
 
 calendar = Calendar(md,id, False) 
 locCalendar = Calendar(md, id, False)

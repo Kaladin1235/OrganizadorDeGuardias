@@ -1,9 +1,4 @@
 import main
-# some info
-
-# it has a chance of 0.0255010965471515% of printing random things like zeros (on months with 30 or 31 days) on the output calendar. In case that happens, run the program again. Oh, and the chances increase if you eliminate a lot of days for surgeons.
-# if you run the program with unrealistic data (like saying the month has 60 days, or putting an 8 on the initial day)the program throw an error, ignore you or add random movie characters to the surgeon list
-
 
 def menu():
     print("¿Qué quieres hacer?")
