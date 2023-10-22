@@ -70,7 +70,6 @@ def OrderDay(z, day, surgeonLst):
                 i.calManager.calendar[z][3] = -1
               i.num2 += 1
               break
-         
     elif day == 3:
         _, min3, _, _ = orderSurgeons(surgeons, z, day)
         for i in surgeons:
@@ -170,5 +169,5 @@ def locClassify(calendar, surgeons):
     for i in range(len(allCalendars)):
         surgeons = shuffle(surgeons)
         for a in range(len(allCalendars[i])):
-            if allCalendars[i][a] != "--":
+            if allCalendars[i][a] != "--"and allCalendars[i][a] != None:
               locOrderDay(i, a, surgeons)
