@@ -1,5 +1,7 @@
 import classifier
 from functools import reduce
+def thisMustBeChanged():
+    pass
 
 class Calendar():
     def __init__(self, daysInMonth, initialDay, skipDay):
@@ -177,39 +179,42 @@ class Surgeon:
                 self.locCalManager.calendar[0][i-1 + self.calManager.initSkip] = 1
                 elseMinus1(surgeonLst, surgeonLst.index(self), i-1 + self.calManager.initSkip, 5)
 
+def createSurgeons(numSurgeons=10,md=31, id=0, surgeonNames=[], conDays=[]):
+    surgeons = []
+    if surgeonNames == []:
+        surgeonNames = [("Surgeon" + str(i)) for i in range(numSurgeons)]
+    if conDays == []:
+        conDays = [-1 for i in range(numSurgeons)]
+    for i in range(len(conDays)):
+        if conDays[i] == -1:
+            conDays[i] = 6
+    for i in range(numSurgeons):
+        surgeon = Surgeon(surgeonNames[i], md, id, conDays[i])
+        surgeons.append(surgeon)
+    
+    calendar = Calendar(md,id, False) 
+    locCalendar = Calendar(md, id, False)
+ 
+    return surgeons, calendar, locCalendar
+        
+
 md = int(input("Cuantos días tiene el mes?\n"))
 
 id = int(input("Qué dia de la semana es el primero del mes? (0 = lunes, 1 = martes... 6 = domingo)\n"))
-print("Pon -1 para indicar que el cirujano no tiene consulta ese mes")
-conDay1 = int(input("Qué dia de la semana es en el que tiene consulta Álvaro?"))-1
-conDay2 = int(input("Qué dia de la semana es en el que tiene consulta Israel?"))-1
-conDay3 = int(input("Qué dia de la semana es en el que tiene consulta Covadonga?"))-1
-conDay4 = int(input("Qué dia de la semana es en el que tiene consulta Elena?"))-1
-conDay5 = int(input("Qué dia de la semana es en el que tiene consulta Stefan?"))-1
-conDay6 = int(input("Qué dia de la semana es en el que tiene consulta Pipe?"))-1
-conDay7 = int(input("Qué dia de la semana es en el que tiene consulta Leticia?"))-1
-conDay8 = int(input("Qué dia de la semana es en el que tiene consulta Andrés?"))-1
-conDay9 = int(input("Qué dia de la semana es en el que tiene consulta Teresa?"))-1
+thisMustBeChanged();print("Pon -1 para indicar que el cirujano no tiene consulta ese mes")
+thisMustBeChanged();conDay1 = int(input("Qué dia de la semana es en el que tiene consulta Álvaro?"))-1
+thisMustBeChanged();conDay2 = int(input("Qué dia de la semana es en el que tiene consulta Israel?"))-1
+thisMustBeChanged();conDay3 = int(input("Qué dia de la semana es en el que tiene consulta Covadonga?"))-1
+thisMustBeChanged();conDay4 = int(input("Qué dia de la semana es en el que tiene consulta Elena?"))-1
+thisMustBeChanged();conDay5 = int(input("Qué dia de la semana es en el que tiene consulta Stefan?"))-1
+thisMustBeChanged();conDay6 = int(input("Qué dia de la semana es en el que tiene consulta Pipe?"))-1
+thisMustBeChanged();conDay7 = int(input("Qué dia de la semana es en el que tiene consulta Leticia?"))-1
+thisMustBeChanged();conDay8 = int(input("Qué dia de la semana es en el que tiene consulta Andrés?"))-1
+thisMustBeChanged();conDay9 = int(input("Qué dia de la semana es en el que tiene consulta Teresa?"))-1
 
-conDays = [conDay1, conDay2, conDay3, conDay4, conDay5, conDay6, conDay7, conDay8, conDay9]
-for i in range(len(conDays)):
-    if conDays[i] == -1:
-        conDays[i] = 6
 
-calendar = Calendar(md,id, False) 
-locCalendar = Calendar(md, id, False)
-Surgeon1 = Surgeon("Álvaro",md,id, conDay1)
-Surgeon2 = Surgeon("Israel",md,id, conDay2)
-Surgeon3 = Surgeon("Covadonga",md,id, conDay3)
-Surgeon4 = Surgeon("Elena",md,id, conDay4)
-Surgeon5 = Surgeon("Stefan",md,id, conDay5)
-Surgeon6 = Surgeon("Pipe",md,id, conDay6)
-Surgeon7 = Surgeon("Leticia",md,id, conDay7)
-Surgeon8 = Surgeon("Andrés",md,id, conDay8)
-Surgeon9 = Surgeon("Teresa",md,id, conDay9)
-surgeons = [Surgeon1, Surgeon2, Surgeon3, Surgeon4, Surgeon5, Surgeon6, Surgeon7, Surgeon8, Surgeon9]
 
-def convCalendars(type):
+def convCalendars(surgeons, calendar, locCalendar, type):
     if type == "g":
         for i in surgeons:
             for a in range(len(i.calManager.calendar)):
@@ -222,7 +227,7 @@ def convCalendars(type):
                 for b in range(len(i.locCalManager.calendar[a])):
                     if i.locCalManager.calendar[a][b] == 1:
                         locCalendar.calendar[a][b] = i.name
-def addSeed(seed):
+def addSeed(surgeons, seed):
     lst = seed
     for i in range(len(lst)):
         lst[i] = int(lst[i])
@@ -373,7 +378,7 @@ def addSeed(seed):
     surgeons[8].lnum5 = lst[61+63]
     surgeons[8].lnum6 = lst[62+63]
 
-def order():
+def order(surgeons=list, calendar=0, locCalendar=0):
     classifier.classify(calendar, surgeons)
     classifier.locClassify(locCalendar, surgeons)
     convCalendars("g")
@@ -396,15 +401,7 @@ def order():
     print()
 
     seed = []
-    surgeons[0] = Surgeon1
-    surgeons[1] = Surgeon2
-    surgeons[2] = Surgeon3
-    surgeons[3] = Surgeon4
-    surgeons[4] = Surgeon5
-    surgeons[5] = Surgeon6
-    surgeons[6] = Surgeon7
-    surgeons[7] = Surgeon8
-    surgeons[8] = Surgeon9
+    surgeons.sort(key=lambda x: x.name)
 
     for i in range(9):
         seed.append([surgeons[i].num0, surgeons[i].num1, surgeons[i].num2, surgeons[i].num3, surgeons[i].num4, surgeons[i].num5, surgeons[i].num6])
